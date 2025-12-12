@@ -152,12 +152,54 @@ async function loadRecentEntries() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${r.entry_date}</td>
-      <td>${r.wake_time ? r.wake_time : "-"}</td>
+      <td>${r.wake_time ? formatSmartDate(r.wake_time) : "-"}</td>
       <td>${r.walk_minutes ?? "-"}</td>
     `;
     tbody.appendChild(tr);
   });
 }
+function formatSmartDate(isoString) {
+  if (!isoString) return "-";
+
+  const date = new Date(isoString);
+  if (isNaN(date)) return "-";
+
+  const now = new Date();
+
+  const startOfToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
+  const startOfDate = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate()
+  );
+
+  const diffDays = Math.round(
+    (startOfToday - startOfDate) / (1000 * 60 * 60 * 24)
+  );
+
+  const timePart = date.toLocaleString("en-IN", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true
+  });
+
+  if (diffDays === 0) return `Today • ${timePart}`;
+  if (diffDays === 1) return `Yesterday • ${timePart}`;
+
+  const datePart = date.toLocaleString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
+
+  return `${datePart} • ${timePart}`;
+}
+
 
 /* ======================================================
    MODALS
