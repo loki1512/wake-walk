@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wake & Walk — Login</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body class="auth-body">
+  <div class="auth-container">
+
+    <div class="auth-card">
+      <div class="auth-mascot">🐥</div>
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-sub">Let's build your rhythm again.</p>
+
+      <input id="login-username" class="auth-input" placeholder="Username">
+      <input id="login-password" type="password" class="auth-input" placeholder="Password">
+
+      <button id="loginBtn" class="auth-btn">Log In</button>
+
+      <p class="auth-switch">
+        New here? <a href="/signup" class="auth-link">Create an account</a>
+      </p>
+
+      <p id="login-error" class="auth-error"></p>
+    </div>
+  </div>
+
+  <!-- Welcome Animation Modal -->
+  <div id="welcomeModal" class="welcome-modal hidden">
+    <div class="welcome-content">
+      <div class="welcome-mascot">🌅</div>
+      <h2>Welcome back!</h2>
+    </div>
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>

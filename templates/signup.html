@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wake & Walk — Sign Up</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+
+  <body class="auth-body">
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-mascot">🌱</div>
+        <h1 class="auth-title">Join Wake & Walk</h1>
+        <p class="auth-sub">Small habits. Better days.</p>
+
+        <input id="signup-username" class="auth-input" placeholder="Username" />
+        <input id="signup-email" class="auth-input" placeholder="Email" />
+        <input
+          id="signup-password"
+          type="password"
+          class="auth-input"
+          placeholder="Password"
+        />
+
+        <button id="signupBtn" class="auth-btn">Create Account</button>
+
+        <p class="auth-switch">
+          Already have an account?
+          <a href="/login" class="auth-link">Log in</a>
+        </p>
+
+        <p id="signup-error" class="auth-error"></p>
+      </div>
+    </div>
+
+    <!-- Welcome Animation Modal -->
+    <div id="welcomeModal" class="welcome-modal hidden">
+      <div class="welcome-content">
+        <div class="welcome-mascot">🎉</div>
+        <h2>Welcome!</h2>
+      </div>
+    </div>
+
+    <script src="/static/main.js"></script>
+  </body>
+</html>
