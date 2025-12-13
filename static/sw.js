@@ -1,7 +1,12 @@
-self.addEventListener("install", () => {
+self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
-self.addEventListener("fetch", () => {
-  // Minimal PWA → no caching yet
+self.addEventListener("activate", (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
+// IMPORTANT: fetch handler must respond
+self.addEventListener("fetch", (event) => {
+  event.respondWith(fetch(event.request));
 });
