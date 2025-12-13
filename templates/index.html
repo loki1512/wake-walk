@@ -103,10 +103,20 @@
     />
     <script src="/static/main.js"></script>
     <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/static/service-worker.js");
-      }
-    </script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+  
+        navigator.serviceWorker.register("/static/sw.js", { scope: "/" })
+        .then(reg => {
+          console.log("Service worker registered", reg.scope);
+        })
+        .catch(err => {
+          console.error("Service worker registration failed", err);
+        });
+    });
+  }
+</script>
+
 
   </body>
 </html>
